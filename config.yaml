@@ -1,0 +1,52 @@
+databases:
+  clickhouse:
+    type: clickhouse
+    dsn: "clickhouse://default:nam123@localhost:9000/pm_access"
+  mysql:
+    type: mysql
+    dsn: "root:nam123@tcp(localhost:3306)/pm_access"
+
+# Patterns to find tables (e.g., "g_nr*")
+table_patterns:
+  - "g_nr*"
+
+# Global default rules applied to columns if not overridden
+default_rules:
+  ne_id:
+    type: random_int
+    min: 1
+    max: 5
+  duration:
+    type: constant
+    value: 300
+  record_time:
+    type: time_range
+    start: "2024-01-01 00:00:00"
+    end: "2026-01-31 23:59:59"
+  timestamp:
+    type: time_range
+    start: "2024-01-01 00:00:00"
+    end: "2026-01-31 23:59:59"
+  rat_type:
+    type: set
+    values: ["NR_TDD", "NR_FDD"]
+  cell_name:
+    type: template
+    value: "Cell_{{number}}"
+  cell_index:
+    type: int_range
+    min: 1
+    max: 3  # max cell index 
+  "c_*":
+    type: set
+    values: [0, 1, 2, 3]
+    # type: random_int
+    # min: 0
+    # max: 10000
+
+# Table specific overrides (optional)
+tables:
+  # Example:
+  # g_nr_cell_availability:
+  #   columns:
+  #     c_1039: { type: random_int, min: 0, max: 500 }
