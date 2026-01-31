@@ -2,16 +2,8 @@
 
 Tool sinh dữ liệu cho **ClickHouse** và **MySQL**.
 
-## 1. Cài đặt & Build
-Yêu cầu: Golang 1.23+
 
-```bash
-# Build tool
-go mod tidy
-go build -o pm-gen cmd/pm-gen/main.go
-```
-
-## 2. Cách sử dụng
+## 1. Cách sử dụng
 Chạy tool với các tham số dòng lệnh tùy chọn:
 
 ```bash
@@ -34,7 +26,7 @@ Chạy tool với các tham số dòng lệnh tùy chọn:
 ./pm-gen --dbs mysql --tables g_nr_cell_availability --numOfRecords 5000
 ```
 
-## 3. Cấu hình (`config.yaml`)
+## 2. Cấu hình (`config.yaml`)
 
 ### Databases
 Định nghĩa các kết nối database. Hỗ trợ `clickhouse` và `mysql`.
